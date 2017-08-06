@@ -25,8 +25,16 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
     public $password;
     public $rePassword;
     public $code;
+<<<<<<< HEAD
     public $tel_code;
     public $agree;
+=======
+<<<<<<< HEAD
+    public $tel_code;
+    public $agree;
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
+>>>>>>> add72ce4f6b209301c688b2cca61928ab9b8fa35
     /**
      * @inheritdoc
      */
@@ -46,11 +54,24 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'email'], 'string', 'max' => 100],
             [['tel'], 'string', 'max' => 11],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> add72ce4f6b209301c688b2cca61928ab9b8fa35
             [['username','email','tel'],'unique'],
             [['email'],'email'],
             [['tel_code'],'integer'],
             ['code','captcha','captchaAction'=>'member/captcha'],
             [['username','code','tel_code','password','rePassword'], 'required'],
+<<<<<<< HEAD
+=======
+=======
+            [['username','email'],'unique'],
+            [['email'],'email'],
+            ['code','captcha','captchaAction'=>'member/captcha'],
+            [['username','code','password','rePassword'], 'required'],
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
+>>>>>>> add72ce4f6b209301c688b2cca61928ab9b8fa35
             ];
 
     }
@@ -75,8 +96,16 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
             'password'=>'密码：',
             'rePassword'=> '确认密码：',
             'code'=>'验证码：',
+<<<<<<< HEAD
             'tel_code' => '验证码：',
             'agree'=>'我已阅读并同意《用户注册协议》'
+=======
+<<<<<<< HEAD
+            'tel_code' => '验证码：',
+            'agree'=>'我已阅读并同意《用户注册协议》'
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
+>>>>>>> add72ce4f6b209301c688b2cca61928ab9b8fa35
         ];
     }
 
