@@ -38,6 +38,7 @@ class LoginForm extends Model{
                 //$admin->last_login_ip = $_SERVER["REMOTE_ADDR"];
                 $member->last_login_ip = ip2long(\Yii::$app->request->userIP);
                 $member->save(false);
+<<<<<<< HEAD
 
 
                 //将cookie购物车同步到数据库
@@ -68,6 +69,8 @@ class LoginForm extends Model{
                 //var_dump($carts);exit;
 
 
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
                 return true;
             }else{
                 //密码错误.提示错误信息

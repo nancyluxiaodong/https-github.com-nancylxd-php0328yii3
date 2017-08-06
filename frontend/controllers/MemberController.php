@@ -14,6 +14,7 @@ class MemberController extends \yii\web\Controller
     //注册功能
     public function actionRegister(){
         $model = new Member();
+<<<<<<< HEAD
         if($model->load(\Yii::$app->request->post()) && $model->validate()) {
             //验证短信验证码
             $code2 = \Yii::$app->session->get('code_' . $model->tel);
@@ -29,6 +30,17 @@ class MemberController extends \yii\web\Controller
             } else {
                 $model->addError('tel_code', '短信验证码错误');
             }
+=======
+        if($model->load(\Yii::$app->request->post()) && $model->validate()){
+            //将密码转换为hash密码保存到数据库
+            $model->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
+            $model->created_at = time();
+            //自动登录auth_key生成
+            $model->auth_key = \Yii::$app->security->generateRandomString();
+            $model->save(false);
+            \Yii::$app->session->setFlash('success', '注册成功');
+            return $this->redirect(['member/login']);
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
         }
         return $this->render('register',['model'=>$model]);
     }
@@ -42,7 +54,11 @@ class MemberController extends \yii\web\Controller
                //登录成功，保存到session中
                //\Yii::$app->session->setFlash('success', '登录成功');
                //var_dump($model);exit;
+<<<<<<< HEAD
                return $this->redirect(['goods/index']);
+=======
+               return $this->redirect(['member/address']);
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
            }
        }
        return $this->render('login', ['model' => $model]);
@@ -59,16 +75,26 @@ class MemberController extends \yii\web\Controller
     public function actionAddress(){
        $model = new Address();
        //var_dump($_POST);
+<<<<<<< HEAD
 
        if($model->load(\Yii::$app->request->post()) && $model->validate()){
             $model->member_id = \Yii::$app->user->id;
+=======
+        //收货地址管理
+
+       if($model->load(\Yii::$app->request->post()) && $model->validate()){
+            $model->member_id = \Yii::$app->user->id();
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
             //var_dump($model);exit;
             $model->save();
             //\Yii::$app->session->setFlash('success','地址添加成功');
             return $this->redirect(['member/address']);
        }
        //$address = Address::find()->orderBy('is_default DESC')->limit(3)->all();
+<<<<<<< HEAD
         //收货地址管理
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
        $address = Address::findAll(['member_id'=>\Yii::$app->user->id]);
        return $this->render('address',['model'=>$model,'address'=>$address]);
     }
@@ -79,7 +105,10 @@ class MemberController extends \yii\web\Controller
         $model = new LoginForm();
         return $this->redirect('login',['model'=>$model,]);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
     public function actionUser()
     {
         //可以通过 Yii::$app->user 获得一个 User实例，
@@ -95,6 +124,7 @@ class MemberController extends \yii\web\Controller
         $isGuest = \Yii::$app->user->isGuest;
         var_dump($isGuest);
     }
+<<<<<<< HEAD
 //发送短信功能
     public function actionSendSms()
     {
@@ -107,6 +137,8 @@ class MemberController extends \yii\web\Controller
         //将短信验证码保存redis（session，mysql）
         \Yii::$app->session->set('code_'.$_POST['tel'],$code);
     }
+=======
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
 
 //定义验证码操作
     public function actions(){

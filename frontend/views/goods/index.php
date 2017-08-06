@@ -135,6 +135,7 @@
             <div class="cat_bd">
                 <?php foreach ($model as $value): ?>
                 <div class="cat item1">
+<<<<<<< HEAD
                     <h3><?= \yii\bootstrap\Html::a($value->name,['goods/list','id'=>$value->id])?><b></b></h3>
                     <div class="cat_detail">
                     <?php foreach (\backend\models\GoodsCategory::find()->where(['=','parent_id',$value->id])->all() as $value2): ?>
@@ -142,6 +143,13 @@
                             <dt>
                                 <?= \yii\bootstrap\Html::a($value2->name,['goods/list','id'=>$value2->id])?>
                             </dt>
+=======
+                    <h3><a href=""><?=$value->name?></a><b></b></h3>
+                    <div class="cat_detail">
+                    <?php foreach (\backend\models\GoodsCategory::find()->where(['=','parent_id',$value->id])->all() as $value2): ?>
+                        <dl class="dl_1st">
+                            <dt><a href=""><?=$value2->name?></a></dt>
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
                             <dd>
                         <?php foreach (\backend\models\GoodsCategory::find()->where(['=','parent_id',$value2->id])->all() as $value3):
                             echo \yii\bootstrap\Html::a($value3->name,['goods/list','id'=>$value3->id]);

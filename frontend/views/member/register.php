@@ -76,15 +76,25 @@
                         <p></p>
                     </li>
                     <li id="li_tel">
+<<<<<<< HEAD
                         <?= $form->field($model,'tel')->textInput(['class'=>'txt','placeholder' => '请输入正确手机号码','id'=>'tel'])?>
+=======
+                        <?= $form->field($model,'tel')->textInput(['class'=>'txt','placeholder' => ''])?>
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
                         <!--<label for="">手机号码：</label>
                         <input type="text" class="txt" value="" name="Member[tel]" id="tel" placeholder=""/>-->
                     </li>
                     <li id="li_captcha">
                         <!-- //$form->field($model,'captcha')->textInput(['class'=>'txt','placeholder' => '请输入短信验证码'])-->
+<<<<<<< HEAD
 <!--                         <label for="">验证码：</label>-->
                         <input type="button" onclick="bindPhoneNum(this)" id="get_captcha" value="获取验证码" style="height: 25px;padding:3px 8px;margin: 0px auto 10px 60px;ma"/>
                         <?php echo $form->field($model,'tel_code')->textInput(['class'=>'txt','placeholder'=>'请输入短信验证码','disabled'=>"disabled", 'id'=>"captcha"]);?>
+=======
+                         <label for="">验证码：</label>
+                        <input type="text" class="txt" value="" placeholder="" name="Member[captcha]" disabled="disabled" id="captcha"/>
+                        <input type="button" onclick="bindPhoneNum(this)" id="get_captcha" value="获取验证码" style="height: 25px;padding:3px 8px"/>
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
 
                     </li >
                     <li class="checkcode" id="li_code">
@@ -99,7 +109,11 @@
 
                     <li>
                         <label for="">&nbsp;</label>
+<<<<<<< HEAD
                         <?php echo $form->field($model,'agree')->checkbox(['class'=>'chb','id'=>"agree" ]);?>
+=======
+                        <input type="checkbox" class="chb" checked="checked" /> 我已阅读并同意《用户注册协议》
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
                     </li>
                     <li>
                         <!--<label for="">&nbsp;</label>
@@ -152,6 +166,7 @@
 <!-- 底部版权 end -->
 <script type="text/javascript" src="<?=\Yii::getAlias('@web')?>/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
     function bindPhoneNum(){
         //启用输入框
         $('#captcha').prop('disabled',false);
@@ -199,6 +214,28 @@
         console.debug($("#agree").val());
     });
 //    更换验证码
+=======
+    function bindPhoneNum() {
+        //启用输入框
+        $('#captcha').prop('disabled', false);
+
+        var time = 30;
+        var interval = setInterval(function () {
+            time--;
+            if (time <= 0) {
+                clearInterval(interval);
+                var html = '获取验证码';
+                $('#get_captcha').prop('disabled', false);
+            } else {
+                var html = time + ' 秒后再次获取';
+                $('#get_captcha').prop('disabled', true);
+            }
+
+            $('#get_captcha').val(html);
+        }, 1000);
+    }
+    //更换验证码
+>>>>>>> c33ae3bb2ac604eaaa977fac84451893a7c6f218
 //$("#member-code-image").click(function(){
 //$.getJSON('/site/captcha?refresh=1',function(json){
 //$("#member-code-image").attr('src',json.url);
